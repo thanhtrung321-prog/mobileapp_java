@@ -22,12 +22,13 @@ public class SignActivity extends AppCompatActivity {
     private FirebaseAuth auth;
     private DatabaseReference database;
 
-    // Khai báo EditText cho email, password, userName và nameOfRestaurant
+    // Khai báo EditText cho email, password, userName, nameOfRestaurant và roles
     private EditText emailEditText;
     private EditText passwordEditText;
     private EditText password_reEditText;
     private EditText userNameEditText;
     private EditText nameOfRestaurantEditText;
+    private EditText rolesEditText;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,6 +46,7 @@ public class SignActivity extends AppCompatActivity {
         passwordEditText = findViewById(R.id.password);
         password_reEditText = findViewById(R.id.password_re);
         userNameEditText = findViewById(R.id.username);
+        rolesEditText = findViewById(R.id.roles); // Ánh xạ EditText của roles
 
         // Gắn sự kiện click cho nút đăng ký
         Button registerButton = findViewById(R.id.register_button);
@@ -56,9 +58,10 @@ public class SignActivity extends AppCompatActivity {
                 String password = passwordEditText.getText().toString().trim();
                 String password_re = password_reEditText.getText().toString().trim();
                 String userName = userNameEditText.getText().toString().trim();
+                String roles = rolesEditText.getText().toString().trim(); // Lấy giá trị của roles từ EditText
 
                 // Kiểm tra xem các trường thông tin đã được nhập đầy đủ chưa
-                if (email.isEmpty() || password.isEmpty() || password_re.isEmpty() || userName.isEmpty()) {
+                if (email.isEmpty() || password.isEmpty() || password_re.isEmpty() || userName.isEmpty() || roles.isEmpty()) {
                     showToast("Vui lòng nhập đầy đủ thông tin.");
                     return;
                 }
@@ -69,8 +72,8 @@ public class SignActivity extends AppCompatActivity {
                     return;
                 }
 
-                // Gọi phương thức để đăng ký người dùng
-                registerUser(email, password, userName);
+                // Gọi phương thức để đăng ký người dùng với tham số roles
+                registerUser(email, password, userName, roles);
             }
         });
 
@@ -84,7 +87,7 @@ public class SignActivity extends AppCompatActivity {
         });
     }
 
-    private void registerUser(String email, String password, String userName) {
+    private void registerUser(String email, String password, String userName, String roles) {
         // Đăng ký người dùng với email và password
         auth.createUserWithEmailAndPassword(email, password)
                 .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
@@ -94,8 +97,8 @@ public class SignActivity extends AppCompatActivity {
                             // Đăng ký thành công, lấy UID của người dùng
                             String userId = auth.getCurrentUser().getUid();
 
-                            // Tạo một đối tượng User
-                            User user = new User(userName, email);
+                            // Tạo một đối tượng User với roles được truyền vào
+                            User user = new User(userName, email, Integer.parseInt(roles));
 
                             // Lưu thông tin người dùng vào Firebase Database với UID làm key
                             database.child("users").child(userId).setValue(user)
