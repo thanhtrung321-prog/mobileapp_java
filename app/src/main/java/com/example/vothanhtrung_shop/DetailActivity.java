@@ -11,7 +11,7 @@ public class DetailActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detail);
-        TextView textView = findViewById(R.id.textView37);
+        TextView textView = findViewById(R.id.listcomponent);
         componetfood component = new componetfood(textView);
         component.Oncreated();
 
