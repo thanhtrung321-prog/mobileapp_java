@@ -15,6 +15,5 @@ public class DetailActivity extends AppCompatActivity {
         TextView textView = findViewById(R.id.listcomponent);
         componetfood component = new componetfood(textView);
         component.Oncreated();
-
     }
 }
