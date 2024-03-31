@@ -30,9 +30,9 @@ public class LoginActivity extends AppCompatActivity {
         // Khởi tạo FirebaseAuth
         auth = FirebaseAuth.getInstance();
 
-        EditText emailEditText = findViewById(R.id.editTextTextEmailAddress);
-        EditText passwordEditText = findViewById(R.id.editTextTextPassword);
-        Button loginButton = findViewById(R.id.login_button);
+        EditText emailEditText = findViewById(R.id.loginemailAdmin);
+        EditText passwordEditText = findViewById(R.id.loginPasswordadmin);
+        Button loginButton = findViewById(R.id.login_button_admin);
 
         loginButton.setOnClickListener(new View.OnClickListener() {
             @Override

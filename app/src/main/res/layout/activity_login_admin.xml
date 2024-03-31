@@ -54,7 +54,7 @@
         app:layout_constraintTop_toBottomOf="@+id/textView8" />
 
     <EditText
-        android:id="@+id/editTextTextEmailAddress"
+        android:id="@+id/loginemailAdmin"
         android:layout_width="325dp"
         android:layout_height="57dp"
         android:layout_marginStart="10dp"
@@ -71,7 +71,7 @@
         app:layout_constraintTop_toBottomOf="@+id/textView9" />
 
     <EditText
-        android:id="@+id/editTextTextPassword"
+        android:id="@+id/loginPasswordadmin"
         android:layout_width="325dp"
         android:layout_height="57dp"
         android:layout_marginTop="12dp"
@@ -82,10 +82,10 @@
         android:ems="10"
         android:hint="Password"
         android:inputType="textPassword"
-        app:layout_constraintEnd_toEndOf="@+id/editTextTextEmailAddress"
+        app:layout_constraintEnd_toEndOf="@+id/loginemailAdmin"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/editTextTextEmailAddress"
-        app:layout_constraintTop_toBottomOf="@+id/editTextTextEmailAddress" />
+        app:layout_constraintStart_toStartOf="@+id/loginemailAdmin"
+        app:layout_constraintTop_toBottomOf="@+id/loginemailAdmin" />
 
     <TextView
         android:id="@+id/textView10"
@@ -93,10 +93,10 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="12dp"
         android:text="Hoặc"
-        app:layout_constraintEnd_toEndOf="@+id/editTextTextPassword"
+        app:layout_constraintEnd_toEndOf="@+id/loginPasswordadmin"
         app:layout_constraintHorizontal_bias="0.52"
-        app:layout_constraintStart_toStartOf="@+id/editTextTextPassword"
-        app:layout_constraintTop_toBottomOf="@+id/editTextTextPassword" />
+        app:layout_constraintStart_toStartOf="@+id/loginPasswordadmin"
+        app:layout_constraintTop_toBottomOf="@+id/loginPasswordadmin" />
 
     <TextView
         android:id="@+id/textView11"
@@ -119,8 +119,8 @@
         android:drawableLeft="@drawable/facebook_login"
         android:paddingLeft="15dp"
         android:text="Facebook"
-        app:layout_constraintTop_toBottomOf="@+id/editTextTextPassword"
-        app:layout_constraintStart_toStartOf="@+id/editTextTextPassword" />
+        app:layout_constraintTop_toBottomOf="@+id/loginPasswordadmin"
+        app:layout_constraintStart_toStartOf="@+id/loginPasswordadmin" />
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/button3"
@@ -131,11 +131,11 @@
         android:drawableLeft="@drawable/google_login"
         android:paddingLeft="15dp"
         android:text="Google"
-        app:layout_constraintEnd_toEndOf="@+id/editTextTextPassword"
-        app:layout_constraintTop_toBottomOf="@+id/editTextTextPassword" />
+        app:layout_constraintEnd_toEndOf="@+id/loginPasswordadmin"
+        app:layout_constraintTop_toBottomOf="@+id/loginPasswordadmin" />
 
     <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/login_button"
+        android:id="@+id/login_button_admin"
         android:layout_width="157dp"
         android:layout_height="57dp"
         android:textColor="@color/white"
@@ -155,9 +155,9 @@
         android:textSize="20dp"
         android:text="Tôi bị quên mật khẩu"
         android:textColor="@color/text_color"
-        app:layout_constraintEnd_toEndOf="@+id/login_button"
+        app:layout_constraintEnd_toEndOf="@+id/login_button_admin"
         app:layout_constraintHorizontal_bias="0.555"
-        app:layout_constraintStart_toStartOf="@+id/login_button"
-        app:layout_constraintTop_toBottomOf="@+id/login_button" />
+        app:layout_constraintStart_toStartOf="@+id/login_button_admin"
+        app:layout_constraintTop_toBottomOf="@+id/login_button_admin" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
