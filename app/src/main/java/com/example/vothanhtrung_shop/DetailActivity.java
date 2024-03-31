@@ -2,7 +2,11 @@ package com.example.vothanhtrung_shop;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
+import android.media.Image;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 public class DetailActivity extends AppCompatActivity {
@@ -15,5 +19,14 @@ public class DetailActivity extends AppCompatActivity {
         TextView textView = findViewById(R.id.listcomponent);
         componetfood component = new componetfood(textView);
         component.Oncreated();
+        ImageView detailpage=findViewById(R.id.detail_page_home);
+        detailpage.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent=new Intent(DetailActivity.this,HomeAdminActivity.class);
+                startActivity(intent);
+            }
+        });
     }
+
 }
