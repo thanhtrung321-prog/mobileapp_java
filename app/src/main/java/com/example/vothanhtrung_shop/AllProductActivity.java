@@ -1,7 +1,10 @@
 package com.example.vothanhtrung_shop;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
+import android.widget.ImageView;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -31,6 +34,14 @@ public class AllProductActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_all_product);
+        ImageView viewhome=findViewById(R.id.imageViewBack);
+        viewhome.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent =new Intent(AllProductActivity.this, HomeAdminActivity.class);
+                startActivity(intent);
+            }
+        });
 
         rcvProduct = findViewById(R.id.recyclerViewProducts);
         rcvProduct.setLayoutManager(new LinearLayoutManager(this));
