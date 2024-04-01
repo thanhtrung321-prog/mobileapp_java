@@ -1,8 +1,8 @@
 package com.example.vothanhtrung_shop;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.os.Bundle;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 public class AllProductActivity extends AppCompatActivity {
 

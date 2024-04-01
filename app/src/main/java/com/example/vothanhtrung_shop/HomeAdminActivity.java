@@ -9,7 +9,8 @@ import android.view.View;
 
 public class HomeAdminActivity extends AppCompatActivity {
 
-    private ConstraintLayout addproduct; // Khai báo biến addproduct ở đây
+    private ConstraintLayout addproduct;// Khai báo biến addproduct ở đây
+    protected ConstraintLayout allproduct;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -18,6 +19,14 @@ public class HomeAdminActivity extends AppCompatActivity {
 
         // Ánh xạ và gán giá trị cho addproduct trong phương thức onCreate()
         addproduct = findViewById(R.id.Addproduct);
+        allproduct=findViewById(R.id.Allproductview);
+        allproduct.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent=new Intent(HomeAdminActivity.this,AllProductActivity.class);
+                startActivity(intent);
+            }
+        });
 
         // Thiết lập sự kiện click cho addproduct
         addproduct.setOnClickListener(new View.OnClickListener() {
@@ -28,5 +37,6 @@ public class HomeAdminActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
     }
 }
