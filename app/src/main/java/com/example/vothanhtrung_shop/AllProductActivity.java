@@ -1,13 +1,11 @@
 package com.example.vothanhtrung_shop;
 
-import static com.example.vothanhtrung_shop.R.id.minusButton;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
-import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -23,7 +21,6 @@ import com.google.firebase.database.ValueEventListener;
 import java.util.ArrayList;
 import java.util.List;
 
-// Import lớp ProductAdapter từ package tương ứng
 import com.example.vothanhtrung_shop.adaptar.ProductAdapter;
 
 public class AllProductActivity extends AppCompatActivity {
@@ -66,12 +63,12 @@ public class AllProductActivity extends AppCompatActivity {
                 productList.clear();
 
                 for (DataSnapshot productSnapshot : dataSnapshot.getChildren()) {
-
+                    String productId = productSnapshot.getKey(); // Lấy ID của sản phẩm từ key của DataSnapshot
                     String productName = productSnapshot.child("namedetaiproduct").getValue(String.class);
                     int productPrice = productSnapshot.child("priceproduct").getValue(Integer.class);
                     String imageUrl = productSnapshot.child("imageUrlProduct").getValue(String.class);
 
-                    Product product = new Product(productName, productPrice, imageUrl);
+                    Product product = new Product(productId, productName, productPrice, imageUrl);
                     productList.add(product);
                 }
 
@@ -81,6 +78,7 @@ public class AllProductActivity extends AppCompatActivity {
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {
                 Log.e("Firebase", "Error fetching data", databaseError.toException());
+                Toast.makeText(AllProductActivity.this, "Error fetching data", Toast.LENGTH_SHORT).show();
             }
         });
     }

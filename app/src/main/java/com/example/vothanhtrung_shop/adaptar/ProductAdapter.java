@@ -7,6 +7,7 @@ import android.view.ViewGroup;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -14,16 +15,22 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.bumptech.glide.Glide;
 import com.example.vothanhtrung_shop.Product;
 import com.example.vothanhtrung_shop.R;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.List;
 
 public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ViewHolder> {
     private Context context;
     private List<Product> productList;
+    private DatabaseReference productsRef;
 
     public ProductAdapter(Context context, List<Product> productList) {
         this.context = context;
         this.productList = productList;
+        this.productsRef = FirebaseDatabase.getInstance().getReference().child("products");
     }
 
     @NonNull
@@ -44,6 +51,35 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ViewHold
 
         // Set up quantity control
         holder.setupQuantityControl();
+
+        // Set up delete button click listener
+        holder.deleteproduct.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // Get the ID of the product to be deleted
+                String productId = product.getId();
+                // Remove the product from the database
+                productsRef.child(productId).removeValue()
+                        .addOnSuccessListener(new OnSuccessListener<Void>() {
+                            @Override
+                            public void onSuccess(Void aVoid) {
+                                // Remove the product from the productList
+                                productList.remove(position);
+                                // Notify adapter about item removal
+                                notifyItemRemoved(position);
+                                // Show a toast message to indicate successful deletion
+                                Toast.makeText(context, "Xóa thành công sản phẩm ", Toast.LENGTH_SHORT).show();
+                            }
+                        })
+                        .addOnFailureListener(new OnFailureListener() {
+                            @Override
+                            public void onFailure(@NonNull Exception e) {
+                                // Handle any errors that may occur during deletion
+                                Toast.makeText(context, "Xóa sản phẩm ko thành công ", Toast.LENGTH_SHORT).show();
+                            }
+                        });
+            }
+        });
     }
 
     @Override
@@ -58,6 +94,7 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ViewHold
         TextView quantityTextView;
         ImageButton minusButton;
         ImageButton plusButton;
+        ImageView deleteproduct;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -67,6 +104,7 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ViewHold
             quantityTextView = itemView.findViewById(R.id.quantity);
             minusButton = itemView.findViewById(R.id.minusButton);
             plusButton = itemView.findViewById(R.id.plusebutton);
+            deleteproduct = itemView.findViewById(R.id.detelebuttonproduct);
         }
 
         public void setupQuantityControl() {
