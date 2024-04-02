@@ -1,21 +1,32 @@
 package com.example.vothanhtrung_shop;
 
 public class ProductAdminDetail {
+    private String productId; // Thêm trường productId
     private String namedetaiproduct;
-    private  double priceproduct;
-    private  String imageUrlProduct;
-    private  String description;
+    private double priceproduct;
+    private String imageUrlProduct;
+    private String description;
     private String componentproduct;
-    public ProductAdminDetail(){
+
+    public ProductAdminDetail() {
         // HÀM TẠO K CẦN THAM SỐ
     };
 
-    public ProductAdminDetail(String namedetaiproduct,double priceproduct,String imageUrlProduct,String description,String componentproduct){
-        this.namedetaiproduct=namedetaiproduct;
-        this.priceproduct=priceproduct;
-        this.imageUrlProduct=imageUrlProduct;
-        this.description=description;
-        this.componentproduct=componentproduct;
+    public ProductAdminDetail(String productId, String namedetaiproduct, double priceproduct, String imageUrlProduct, String description, String componentproduct) {
+        this.productId = productId; // Thêm khởi tạo cho trường productId
+        this.namedetaiproduct = namedetaiproduct;
+        this.priceproduct = priceproduct;
+        this.imageUrlProduct = imageUrlProduct;
+        this.description = description;
+        this.componentproduct = componentproduct;
+    }
+
+    public String getProductId() {
+        return productId;
+    }
+
+    public void setProductId(String productId) {
+        this.productId = productId;
     }
 
     public String getNamedetaiproduct() {

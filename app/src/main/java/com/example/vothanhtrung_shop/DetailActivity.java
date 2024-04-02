@@ -78,6 +78,10 @@ public class DetailActivity extends AppCompatActivity {
                     detailUploadproduct.uploadProduct(productName, productPrice, productDescription, productIngredients, productImageUri);
                     // Hiển thị thông báo khi sản phẩm đã được thêm thành công
                     Toast.makeText(DetailActivity.this, "Sản phẩm đã được thêm thành công", Toast.LENGTH_SHORT).show();
+                    // Chuyển người dùng trở lại trang chính
+                    Intent intent = new Intent(DetailActivity.this, HomeAdminActivity.class);
+                    startActivity(intent);
+                    finish(); // Kết thúc hoạt động hiện tại để người dùng không thể quay lại trang này từ trang chính
                 } else {
                     // Nếu chưa chọn hình ảnh, thông báo cho người dùng
                     Toast.makeText(DetailActivity.this, "Vui lòng chọn hình ảnh", Toast.LENGTH_SHORT).show();
@@ -87,12 +91,13 @@ public class DetailActivity extends AppCompatActivity {
 
         ImageView addImageProduct = findViewById(R.id.add_image_product);
         ImageView addproductimage = findViewById(R.id.imageviewproduct);
-        ImageView pagehome=findViewById(R.id.detail_page_home);
+        ImageView pagehome = findViewById(R.id.detail_page_home);
         pagehome.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent=new Intent(DetailActivity.this, HomeAdminActivity.class);
+                Intent intent = new Intent(DetailActivity.this, HomeAdminActivity.class);
                 startActivity(intent);
+                finish(); // Kết thúc hoạt động hiện tại để người dùng không thể quay lại trang này từ trang chính
             }
         });
         addImageProduct.setOnClickListener(new View.OnClickListener() {

@@ -7,6 +7,8 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 
+import java.util.UUID;
+
 public class DetailUploadproduct {
 
     private DatabaseReference productsRef;
@@ -20,7 +22,7 @@ public class DetailUploadproduct {
 
     public void uploadProduct(String productName, double productPrice, String productDescription, String productIngredients, Uri productImageUri) {
         // Tạo một đối tượng ProductAdminDetail từ thông tin nhập vào
-        ProductAdminDetail product = new ProductAdminDetail(productName, productPrice, "", productDescription, productIngredients);
+        ProductAdminDetail product = new ProductAdminDetail(generateUniqueId(), productName, productPrice, "", productDescription, productIngredients);
 
         // Thêm sản phẩm vào Firebase Realtime Database
         String productId = productsRef.push().getKey();
@@ -50,5 +52,9 @@ public class DetailUploadproduct {
                         // Ví dụ: Toast.makeText(context, "Failed to upload image", Toast.LENGTH_SHORT).show();
                     });
         }
+    }
+
+    private String generateUniqueId() {
+        return UUID.randomUUID().toString(); // Sử dụng UUID để tạo ID duy nhất
     }
 }

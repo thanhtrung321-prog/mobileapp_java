@@ -66,6 +66,7 @@ public class AllProductActivity extends AppCompatActivity {
                 productList.clear();
 
                 for (DataSnapshot productSnapshot : dataSnapshot.getChildren()) {
+
                     String productName = productSnapshot.child("namedetaiproduct").getValue(String.class);
                     int productPrice = productSnapshot.child("priceproduct").getValue(Integer.class);
                     String imageUrl = productSnapshot.child("imageUrlProduct").getValue(String.class);
