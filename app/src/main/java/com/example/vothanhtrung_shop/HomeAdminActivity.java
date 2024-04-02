@@ -11,6 +11,7 @@ public class HomeAdminActivity extends AppCompatActivity {
 
     private ConstraintLayout addproduct;// Khai báo biến addproduct ở đây
     protected ConstraintLayout allproduct;
+    protected  ConstraintLayout profileadmin;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -20,6 +21,15 @@ public class HomeAdminActivity extends AppCompatActivity {
         // Ánh xạ và gán giá trị cho addproduct trong phương thức onCreate()
         addproduct = findViewById(R.id.Addproduct);
         allproduct=findViewById(R.id.Allproductview);
+        profileadmin=findViewById(R.id.profileAdmin);
+        profileadmin.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent=new Intent(HomeAdminActivity.this,AdminprofileActivity.class);
+                startActivity(intent);
+            }
+        });
+
         allproduct.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
