@@ -75,7 +75,7 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ViewHold
                             @Override
                             public void onFailure(@NonNull Exception e) {
                                 // Handle any errors that may occur during deletion
-                                Toast.makeText(context, "Xóa sản phẩm ko thành công ", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(context, "Xóa sản phẩm không thành công ", Toast.LENGTH_SHORT).show();
                             }
                         });
             }
