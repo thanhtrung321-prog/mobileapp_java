@@ -209,7 +209,7 @@
         </androidx.constraintlayout.widget.ConstraintLayout>
 
         <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/constraintLayout6"
+            android:id="@+id/logoutadminHome"
             android:layout_width="150dp"
             android:layout_height="85dp"
             android:layout_marginTop="5dp"
@@ -218,7 +218,7 @@
             android:background="@drawable/background_home_admin"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/constraintLayout3"
+            app:layout_constraintTop_toBottomOf="@+id/addUserAdmin"
             app:layout_constraintVertical_bias="0.389">
 
 
@@ -251,7 +251,7 @@
             android:layout_marginTop="32dp"
             android:layout_marginEnd="10dp"
             android:background="@drawable/background_home_admin"
-            app:layout_constraintEnd_toStartOf="@+id/constraintLayout3"
+            app:layout_constraintEnd_toStartOf="@+id/addUserAdmin"
             app:layout_constraintHorizontal_bias="0.155"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/Addproduct">
@@ -286,7 +286,7 @@
             android:layout_marginEnd="10dp"
             android:background="@drawable/background_home_admin"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/constraintLayout6"
+            app:layout_constraintEnd_toStartOf="@+id/logoutadminHome"
             app:layout_constraintHorizontal_bias="0.142"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/profileAdmin"
@@ -348,7 +348,7 @@
         </androidx.constraintlayout.widget.ConstraintLayout>
 
         <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/constraintLayout3"
+            android:id="@+id/addUserAdmin"
             android:layout_width="150dp"
             android:layout_height="85dp"
             android:layout_marginTop="32dp"
