@@ -1,9 +1,12 @@
 package com.example.vothanhtrung_shop;
 
+import static com.example.vothanhtrung_shop.R.id.minusButton;
+
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 
 import androidx.annotation.NonNull;
@@ -30,6 +33,7 @@ public class AllProductActivity extends AppCompatActivity {
     private ProductAdapter mProductAdapter;
     private List<Product> productList;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -42,6 +46,7 @@ public class AllProductActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
 
         rcvProduct = findViewById(R.id.recyclerViewProducts);
         rcvProduct.setLayoutManager(new LinearLayoutManager(this));

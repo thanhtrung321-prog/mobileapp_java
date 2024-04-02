@@ -4,6 +4,7 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -40,6 +41,9 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ViewHold
 
         // Load image using Glide library
         Glide.with(context).load(product.getImageUrl()).into(holder.imageViewProduct);
+
+        // Set up quantity control
+        holder.setupQuantityControl();
     }
 
     @Override
@@ -47,17 +51,47 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ViewHold
         return productList.size();
     }
 
-    public static class ViewHolder extends RecyclerView.ViewHolder {
+    public class ViewHolder extends RecyclerView.ViewHolder {
         ImageView imageViewProduct;
         TextView textViewProductName;
         TextView textViewProductPrice;
+        TextView quantityTextView;
+        ImageButton minusButton;
+        ImageButton plusButton;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             imageViewProduct = itemView.findViewById(R.id.imageViewProduct);
             textViewProductName = itemView.findViewById(R.id.textViewProductName);
             textViewProductPrice = itemView.findViewById(R.id.textViewProductPrice);
+            quantityTextView = itemView.findViewById(R.id.quantity);
+            minusButton = itemView.findViewById(R.id.minusButton);
+            plusButton = itemView.findViewById(R.id.plusebutton);
+        }
+
+        public void setupQuantityControl() {
+            // Set up click listeners for minus and plus buttons
+            minusButton.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    // Decrease quantity by 1 if greater than 1
+                    int quantity = Integer.parseInt(quantityTextView.getText().toString());
+                    if (quantity > 1) {
+                        quantity--;
+                        quantityTextView.setText(String.valueOf(quantity));
+                    }
+                }
+            });
+
+            plusButton.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    // Increase quantity by 1
+                    int quantity = Integer.parseInt(quantityTextView.getText().toString());
+                    quantity++;
+                    quantityTextView.setText(String.valueOf(quantity));
+                }
+            });
         }
     }
 }
-
