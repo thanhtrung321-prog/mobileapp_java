@@ -58,24 +58,25 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ViewHold
             public void onClick(View v) {
                 // Get the ID of the product to be deleted
                 String productId = product.getId();
+
                 // Remove the product from the database
                 productsRef.child(productId).removeValue()
                         .addOnSuccessListener(new OnSuccessListener<Void>() {
                             @Override
                             public void onSuccess(Void aVoid) {
                                 // Remove the product from the productList
-                                productList.remove(position);
+                                productList.remove(product);
                                 // Notify adapter about item removal
-                                notifyItemRemoved(position);
+                                notifyDataSetChanged();
                                 // Show a toast message to indicate successful deletion
-                                Toast.makeText(context, "Xóa thành công sản phẩm ", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(context, "Xóa thành công sản phẩm", Toast.LENGTH_SHORT).show();
                             }
                         })
                         .addOnFailureListener(new OnFailureListener() {
                             @Override
                             public void onFailure(@NonNull Exception e) {
                                 // Handle any errors that may occur during deletion
-                                Toast.makeText(context, "Xóa sản phẩm không thành công ", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(context, "Xóa sản phẩm không thành công", Toast.LENGTH_SHORT).show();
                             }
                         });
             }
